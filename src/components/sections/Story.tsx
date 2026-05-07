@@ -65,7 +65,7 @@ const Story = () => {
             src={butterfly1}
             alt=""
             aria-hidden="true"
-            className="absolute -left-10 md:-left-20 -top-8 w-[72px] md:w-24 h-auto animate-float"
+            className="absolute -left-10 md:-left-20 -top-[52px] md:-top-8 w-[72px] md:w-24 h-auto animate-float"
             style={{ animationDuration: "5s" }}
           />
 

@@ -102,7 +102,7 @@ const Index = () => {
           src={kiss}
           alt=""
           aria-hidden="true"
-          className="w-64 md:w-[22rem] animate-[pulse_2.4s_ease-in-out_infinite]"
+            className="w-[200px] md:w-[22rem] animate-[pulse_2.4s_ease-in-out_infinite]"
         />
       </div>
       <Story />

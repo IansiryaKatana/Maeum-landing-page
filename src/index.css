@@ -73,6 +73,12 @@
   }
 }
 
+@media (max-width: 767px) {
+  :root {
+    --page-padding: 20px;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
