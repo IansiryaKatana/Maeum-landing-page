@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import bg from "@/assets/background-1.jpg";
 import heroDesktop from "@/assets/head-banner-desktop.png";
 import heroTablet from "@/assets/head-banner-desktop old.png";
@@ -11,8 +12,34 @@ import LipCards from "@/components/sections/LipCards";
 import PhotoBanner from "@/components/sections/PhotoBanner";
 import Waitlist from "@/components/sections/Waitlist";
 import Footer from "@/components/sections/Footer";
+import WaitlistPopup from "@/components/WaitlistPopup";
 
 const Index = () => {
+  const [isWaitlistPopupOpen, setIsWaitlistPopupOpen] = useState(false);
+  const hasAutoOpenedRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const popupShown = window.sessionStorage.getItem("maeum-waitlist-popup-shown") === "true";
+    hasAutoOpenedRef.current = popupShown;
+
+    const onScroll = () => {
+      if (hasAutoOpenedRef.current) return;
+      if (window.scrollY > 50) {
+        hasAutoOpenedRef.current = true;
+        window.sessionStorage.setItem("maeum-waitlist-popup-shown", "true");
+        setIsWaitlistPopupOpen(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const openWaitlistPopup = () => setIsWaitlistPopupOpen(true);
+  const closeWaitlistPopup = () => setIsWaitlistPopupOpen(false);
+
   return (
     <div
       className="min-h-screen w-full overflow-x-hidden"
@@ -108,8 +135,9 @@ const Index = () => {
       <Story />
       <LipCards />
       <PhotoBanner />
-      <Waitlist />
+      <Waitlist onOpenPopup={openWaitlistPopup} />
       <Footer />
+      <WaitlistPopup isOpen={isWaitlistPopupOpen} onClose={closeWaitlistPopup} />
     </div>
   );
 };

@@ -9,7 +9,11 @@ import Butterfly from "@/components/Butterfly";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Waitlist = () => {
+type WaitlistProps = {
+  onOpenPopup?: () => void;
+};
+
+const Waitlist = ({ onOpenPopup }: WaitlistProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -52,7 +56,19 @@ const Waitlist = () => {
             aria-hidden="true"
             className="absolute inset-0 hidden md:block w-full h-full object-contain pointer-events-none"
           />
-          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center -rotate-[3deg] md:-rotate-[3deg]">
+          <div
+            className="relative z-10 h-full flex flex-col items-center justify-center text-center -rotate-[3deg] md:-rotate-[3deg] cursor-pointer"
+            onClick={onOpenPopup}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onOpenPopup?.();
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Open waitlist form"
+          >
             <h2 className="font-shakehand text-primary text-[50px] md:text-[96px] mb-[30px]">
               <span className="md:hidden">
                 Be the first
@@ -65,10 +81,11 @@ const Waitlist = () => {
               Register now for exclusive launch gifts, early ritual access, and members-only surprises.
             </p>
             <button
+              type="button"
               className="group relative inline-flex items-center justify-center gap-1.5 w-full max-w-[240px] md:w-auto md:max-w-none min-w-0 md:min-w-[620px] font-myungjo uppercase text-[11px] md:text-[52px] leading-none tracking-[0.01em] whitespace-nowrap px-4 md:px-12 py-3 md:py-5 bg-[#c81b17] text-[#f6ead0] rounded-[8px] md:rounded-[20px] rotate-[-3deg] md:rotate-[-2deg] shadow-[0_14px_30px_rgba(0,0,0,0.28),0_0_22px_rgba(236,214,170,0.45)] transition-all duration-300 hover:scale-[1.01] hover:brightness-105 active:scale-[0.995]"
-              onClick={() => {
-                const el = document.getElementById("waitlist-form");
-                el?.scrollIntoView({ behavior: "smooth" });
+              onClick={(event) => {
+                event.stopPropagation();
+                onOpenPopup?.();
               }}
             >
               <span className="pointer-events-none absolute inset-[7px] rounded-[8px] md:rounded-[14px] border border-[#f1dbb7]/80" />
