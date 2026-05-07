@@ -141,7 +141,7 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
           ) : (
             <>
               <h3 className="font-shakehand text-[44px] leading-none md:text-[58px] mb-2 text-center">Join the waitlist</h3>
-              <p className="font-geist font-extralight text-[16px] md:text-[18px] leading-6 mb-5">
+              <p className="font-geist font-extralight text-[16px] md:text-[18px] leading-6 mb-5 text-center">
                 Share your details to get launch updates and early access.
               </p>
 
