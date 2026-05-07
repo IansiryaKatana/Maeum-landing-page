@@ -44,13 +44,13 @@ const Story = () => {
           src={kiss}
           alt=""
           aria-hidden="true"
-          className="absolute -left-4 md:-left-24 top-8 w-48 md:w-[21rem] opacity-20 -rotate-12 hidden sm:block"
+          className="absolute -left-4 md:left-2 top-8 md:top-10 w-48 md:w-40 lg:w-[21rem] opacity-20 -rotate-12 hidden sm:block"
         />
         <img
           src={kiss}
           alt=""
           aria-hidden="true"
-          className="absolute -right-4 md:-right-16 top-[78%] w-48 md:w-[21rem] opacity-20 rotate-12 hidden sm:block"
+          className="absolute -right-4 md:right-2 top-[78%] md:top-[74%] w-48 md:w-40 lg:w-[21rem] opacity-20 rotate-12 hidden sm:block"
         />
 
         <h2 className="story-fade font-shakehand text-primary text-[48px] md:text-[72px] leading-tight mb-2">
@@ -60,12 +60,12 @@ const Story = () => {
           a kiss of <span className="font-myungjo">마음</span> <span className="font-shakehand">Maeum</span>
         </h3>
 
-        <div className="relative space-y-5 text-primary font-geist font-extralight text-[16px] leading-6 md:text-[16px] md:leading-6 lg:text-[32px] lg:leading-[1.3] md:-translate-x-[50px]">
+        <div className="relative space-y-5 text-primary font-geist font-extralight text-[16px] leading-6 md:text-[20px] md:leading-7 lg:text-[32px] lg:leading-[1.3] lg:-translate-x-[50px]">
           <img
             src={butterfly1}
             alt=""
             aria-hidden="true"
-            className="absolute -left-10 md:-left-20 -top-[52px] md:-top-8 w-[72px] md:w-24 h-auto animate-float"
+            className="absolute -left-10 md:left-2 -top-[52px] md:-top-6 w-[72px] md:w-16 lg:w-24 h-auto animate-float"
             style={{ animationDuration: "5s" }}
           />
 

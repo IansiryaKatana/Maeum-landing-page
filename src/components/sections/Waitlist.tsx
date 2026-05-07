@@ -77,7 +77,7 @@ const Waitlist = ({ onOpenPopup }: WaitlistProps) => {
               </span>
               <span className="hidden md:inline">Be the first to feel Maeum!</span>
             </h2>
-            <p className="font-geist font-extralight text-primary/80 text-[20px] leading-6 md:text-[16px] md:leading-6 lg:text-[32px] lg:leading-[1.3] mt-0 mb-[30px] w-[75%] md:w-auto max-w-md">
+            <p className="font-geist font-extralight text-primary/80 text-[20px] leading-6 md:text-[24px] md:leading-6 lg:text-[32px] lg:leading-[1.3] mt-0 mb-[30px] w-[75%] md:w-auto max-w-md">
               Register now for exclusive launch gifts, early ritual access, and members-only surprises.
             </p>
             <button

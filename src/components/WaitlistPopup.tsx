@@ -14,6 +14,7 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
   const [phone, setPhone] = useState("");
   const [hasConsent, setHasConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
 
   if (!isOpen) return null;
@@ -48,13 +49,18 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
       setEmail("");
       setPhone("");
       setHasConsent(false);
-      setFeedback("You are on the waitlist. We will notify you soon.");
-      window.setTimeout(() => onClose(), 900);
+      setFeedback(null);
+      setIsSuccessOpen(true);
     } catch {
       setFeedback("Unable to submit right now. Please try again in a moment.");
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const closeSuccessDialog = () => {
+    setIsSuccessOpen(false);
+    onClose();
   };
 
   return (
@@ -79,93 +85,132 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
             ×
           </button>
 
-          <h3 className="font-shakehand text-[44px] leading-none md:text-[58px] mb-2">Join the waitlist</h3>
-          <p className="font-geist font-extralight text-[16px] md:text-[18px] leading-6 mb-5">
-            Share your details to get launch updates and early access.
-          </p>
-
-          <form onSubmit={onSubmit} className="space-y-3">
-            <input
-              type="text"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder="Name"
-              required
-              className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
-            />
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="Email"
-              required
-              className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
-            />
-            <PhoneInput
-              country="us"
-              value={phone}
-              onChange={(value) => setPhone(value)}
-              disableDropdown
-              containerStyle={{ width: "100%" }}
-              buttonStyle={{
-                border: "0",
-                background: "#ffffff",
-                borderRadius: "12px 0 0 12px",
-                cursor: "default",
-              }}
-              inputStyle={{
-                width: "100%",
-                height: "48px",
-                border: "0",
-                borderRadius: "12px",
-                paddingLeft: "56px",
-                fontFamily: "Geist, sans-serif",
-                fontSize: "16px",
-                color: "#000000",
-                boxShadow: "none",
-              }}
-              inputProps={{
-                name: "phone",
-                required: true,
-                placeholder: "Phone number",
-              }}
-            />
-
-            <label className="flex items-start gap-2.5 text-left">
-              <input
-                type="checkbox"
-                checked={hasConsent}
-                onChange={(event) => setHasConsent(event.target.checked)}
-                required
-                className="mt-1 h-4 w-4 rounded border-[#b8a88d] accent-[#c81b17]"
-              />
-              <span className="font-geist text-[12px] md:text-[13px] leading-5 text-black/80">
-                I agree to receive marketing updates from Maeum and accept the{" "}
-                <Link to="/privacy-policy" className="underline text-[#7a3a33] hover:text-[#c81b17]">
-                  Privacy Policy
-                </Link>{" "}
-                and{" "}
-                <Link to="/terms-of-use" className="underline text-[#7a3a33] hover:text-[#c81b17]">
-                  Terms of Use
-                </Link>
-                .
-              </span>
-            </label>
-
-            <button
-              type="submit"
-              disabled={!hasConsent || isSubmitting}
-              className="w-full rounded-[12px] bg-[#c81b17] px-4 py-3 text-[#f6ead0] font-myungjo text-[16px] uppercase tracking-[0.03em] shadow-[0_10px_24px_rgba(0,0,0,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
-
-            {feedback ? (
-              <p className="text-sm font-geist text-[#7a3a33]" role="status">
-                {feedback}
+          {isSuccessOpen ? (
+            <div className="py-2 md:py-4 text-center">
+              <div className="mx-auto mb-5 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#e5f8ea]">
+                <svg
+                  viewBox="0 0 64 64"
+                  className="h-[76px] w-[76px]"
+                  role="img"
+                  aria-label="Submission successful"
+                >
+                  <circle cx="32" cy="32" r="30" fill="#22c55e" />
+                  <path
+                    d="M18 33.5L27.5 43L46.5 24"
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-shakehand text-[44px] leading-none md:text-[58px] mb-3">
+                Congratulations!
+              </h3>
+              <p className="font-geist font-extralight text-[16px] md:text-[18px] leading-6 mb-6 text-black/85">
+                You have successfully joined the Maeum waitlist. We will send your launch updates,
+                early access details, and exclusive member surprises soon.
               </p>
-            ) : null}
-          </form>
+              <button
+                type="button"
+                onClick={closeSuccessDialog}
+                className="w-full rounded-[12px] bg-[#c81b17] px-4 py-3 text-[#f6ead0] font-myungjo text-[16px] uppercase tracking-[0.03em] shadow-[0_10px_24px_rgba(0,0,0,0.2)]"
+              >
+                Done
+              </button>
+            </div>
+          ) : (
+            <>
+              <h3 className="font-shakehand text-[44px] leading-none md:text-[58px] mb-2">Join the waitlist</h3>
+              <p className="font-geist font-extralight text-[16px] md:text-[18px] leading-6 mb-5">
+                Share your details to get launch updates and early access.
+              </p>
+
+              <form onSubmit={onSubmit} className="space-y-3">
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="Name"
+                  required
+                  className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Email"
+                  required
+                  className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
+                />
+                <PhoneInput
+                  country="us"
+                  value={phone}
+                  onChange={(value) => setPhone(value)}
+                  disableDropdown
+                  containerStyle={{ width: "100%" }}
+                  buttonStyle={{
+                    border: "0",
+                    background: "#ffffff",
+                    borderRadius: "12px 0 0 12px",
+                    cursor: "default",
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                    height: "48px",
+                    border: "0",
+                    borderRadius: "12px",
+                    paddingLeft: "56px",
+                    fontFamily: "Geist, sans-serif",
+                    fontSize: "16px",
+                    color: "#000000",
+                    boxShadow: "none",
+                  }}
+                  inputProps={{
+                    name: "phone",
+                    required: true,
+                    placeholder: "Phone number",
+                  }}
+                />
+
+                <label className="flex items-start gap-2.5 text-left">
+                  <input
+                    type="checkbox"
+                    checked={hasConsent}
+                    onChange={(event) => setHasConsent(event.target.checked)}
+                    required
+                    className="mt-1 h-4 w-4 rounded border-[#b8a88d] accent-[#c81b17]"
+                  />
+                  <span className="font-geist text-[12px] md:text-[13px] leading-5 text-black/80">
+                    I agree to receive marketing updates from Maeum and accept the{" "}
+                    <Link to="/privacy-policy" className="underline text-[#7a3a33] hover:text-[#c81b17]">
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link to="/terms-of-use" className="underline text-[#7a3a33] hover:text-[#c81b17]">
+                      Terms of Use
+                    </Link>
+                    .
+                  </span>
+                </label>
+
+                <button
+                  type="submit"
+                  disabled={!hasConsent || isSubmitting}
+                  className="w-full rounded-[12px] bg-[#c81b17] px-4 py-3 text-[#f6ead0] font-myungjo text-[16px] uppercase tracking-[0.03em] shadow-[0_10px_24px_rgba(0,0,0,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+
+                {feedback ? (
+                  <p className="text-sm font-geist text-[#7a3a33]" role="status">
+                    {feedback}
+                  </p>
+                ) : null}
+              </form>
+            </>
+          )}
 
         </div>
       </div>

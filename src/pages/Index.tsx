@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import bg from "@/assets/background-1.jpg";
 import heroDesktop from "@/assets/head-banner-desktop.png";
-import heroTablet from "@/assets/head-banner-desktop old.png";
+import heroTablet from "@/assets/Head-Banner-Tablet.png";
 import heroMobile from "@/assets/head-banner-mobile.png";
 import kiss from "@/assets/KISS.png";
 import logoCream from "@/assets/logo-cream-color.png";
@@ -87,9 +87,6 @@ const Index = () => {
           <div className="w-full flex flex-col items-center px-6">
             <div className="w-full flex flex-col items-center">
               <div className="w-full flex flex-col items-center">
-                <p className="text-center text-[hsl(40,70%,90%)] font-geist font-extralight text-xs md:text-[18px] tracking-wide mb-3">
-                  Coming in August 2026
-                </p>
                 <img src={logoCream} alt="Maeum" className="w-52 md:w-[28rem] lg:w-[34rem] h-auto" />
               </div>
               <div className="relative w-full hidden sm:block mt-2">

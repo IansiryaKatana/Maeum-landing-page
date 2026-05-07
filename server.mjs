@@ -19,6 +19,13 @@ if (fs.existsSync(envLocalPath)) {
 
 app.use(express.json());
 
+const normalizePhoneForBrevo = (rawPhone) => {
+  const cleaned = String(rawPhone ?? "").trim().replace(/[^\d+]/g, "");
+  if (!cleaned) return "";
+  if (cleaned.startsWith("+")) return cleaned;
+  return `+${cleaned}`;
+};
+
 app.post("/api/waitlist", async (req, res) => {
   const apiKey = process.env.BREVO_API_KEY;
   const rawListId = process.env.BREVO_LIST_ID;
@@ -39,8 +46,9 @@ app.post("/api/waitlist", async (req, res) => {
   }
 
   const { name, email, phone, hasConsent } = req.body ?? {};
+  const normalizedPhone = normalizePhoneForBrevo(phone);
 
-  if (!name || !email || !phone || !hasConsent) {
+  if (!name || !email || !normalizedPhone || !hasConsent) {
     return res.status(400).json({
       ok: false,
       message: "Name, email, phone, and consent are required.",
@@ -58,7 +66,7 @@ app.post("/api/waitlist", async (req, res) => {
         email,
         attributes: {
           FIRSTNAME: name,
-          SMS: phone,
+          SMS: normalizedPhone,
         },
         listIds: [listId],
         updateEnabled: true,
@@ -67,19 +75,29 @@ app.post("/api/waitlist", async (req, res) => {
 
     if (!response.ok) {
       const brevoError = await response.text();
+      let brevoErrorMessage = "";
+      try {
+        const parsed = JSON.parse(brevoError);
+        brevoErrorMessage = typeof parsed?.message === "string" ? parsed.message : "";
+      } catch {
+        brevoErrorMessage = "";
+      }
       const statusMessageByCode = {
         400: "Brevo rejected the payload. Check contact attributes and list setup.",
-        401: "Brevo authentication failed. Please verify BREVO_API_KEY.",
+        401: "Brevo authentication failed. Please verify BREVO_API_KEY or Brevo IP allowlist settings.",
         403: "Brevo denied access for this API key.",
         404: "Brevo resource not found. Verify BREVO_LIST_ID.",
         429: "Brevo rate limit reached. Please retry shortly.",
       };
 
+      const message =
+        response.status === 401 && /unrecognised IP address/i.test(brevoErrorMessage)
+          ? "Brevo blocked this server IP. Add your current public IP to Brevo Authorized IPs."
+          : statusMessageByCode[response.status] || "Brevo rejected the contact submission.";
+
       return res.status(response.status).json({
         ok: false,
-        message:
-          statusMessageByCode[response.status] ||
-          "Brevo rejected the contact submission.",
+        message,
         details: brevoError,
       });
     }
