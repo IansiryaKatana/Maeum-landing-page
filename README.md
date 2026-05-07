@@ -1,3 +1,3 @@
-# Welcome to your project
+# Maeum Skincare and Lipcare Landing Page
 
-TODO: Document your project here
+This project is the official Maeum skincare and lipcare landing page.
