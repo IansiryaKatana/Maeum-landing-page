@@ -87,7 +87,7 @@ const Index = () => {
           <div className="w-full flex flex-col items-center px-6">
             <div className="w-full flex flex-col items-center">
               <div className="w-full flex flex-col items-center">
-                <img src={logoCream} alt="Maeum" className="w-52 md:w-[28rem] lg:w-[34rem] h-auto" />
+                <img src={logoCream} alt="Maeum" className="w-52 md:w-[28rem] lg:w-[34rem] h-auto mt-[25px]" />
               </div>
               <div className="relative w-full hidden sm:block mt-2">
                 <img
