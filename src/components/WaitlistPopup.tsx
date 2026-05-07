@@ -16,6 +16,10 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim();
+  const waitlistEndpoint = apiBaseUrl
+    ? `${apiBaseUrl.replace(/\/+$/, "")}/api/waitlist`
+    : "/api/waitlist";
 
   if (!isOpen) return null;
 
@@ -25,7 +29,7 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/waitlist", {
+      const response = await fetch(waitlistEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
