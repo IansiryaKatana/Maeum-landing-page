@@ -1,6 +1,7 @@
 import heroDesktop from "@/assets/head-banner-desktop.png";
 import heroMobile from "@/assets/head-banner-mobile.png";
 import logoCream from "@/assets/logo-cream-color.png";
+import bannerText from "@/assets/banner-text.png";
 import Butterfly from "@/components/Butterfly";
 
 const Hero = () => {
@@ -36,6 +37,7 @@ const Hero = () => {
             Coming in August 2026
           </p>
           <img src={logoCream} alt="Maeum" className="w-52 md:w-[28rem] lg:w-[34rem] h-auto" />
+          <img src={bannerText} alt="Heart Mind Feeling" className="w-56 md:w-[30rem] lg:w-[38rem] h-auto mt-4" />
         </div>
 
         {/* Curved HEART MIND FEELING sentence */}

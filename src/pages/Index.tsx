@@ -5,6 +5,7 @@ import heroTablet from "@/assets/Head-Banner-Tablet.png";
 import heroMobile from "@/assets/head-banner-mobile.png";
 import kiss from "@/assets/KISS.png";
 import logoCream from "@/assets/logo-cream-color.png";
+import bannerText from "@/assets/banner-text.png";
 import butterfly1 from "@/assets/butterfly-1.png";
 import butterfly2 from "@/assets/butterfly-2.png";
 import Story from "@/components/sections/Story";
@@ -86,10 +87,15 @@ const Index = () => {
         <div className="relative z-10 w-full h-full flex flex-col justify-between">
           <div className="w-full flex flex-col items-center px-6">
             <div className="w-full flex flex-col items-center">
-              <div className="w-full flex flex-col items-center">
+              <div className="relative w-full flex flex-col items-center">
                 <img src={logoCream} alt="Maeum" className="w-52 md:w-[28rem] lg:w-[34rem] h-auto mt-[25px]" />
+                <img
+                  src={bannerText}
+                  alt="Heart Mind Feeling"
+                  className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-3/4 h-auto hidden lg:block"
+                />
               </div>
-              <div className="relative w-full hidden sm:block mt-2">
+              <div className="relative w-full mt-2">
                 <img
                   src={butterfly1}
                   alt=""
