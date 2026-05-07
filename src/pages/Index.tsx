@@ -88,11 +88,11 @@ const Index = () => {
           <div className="w-full flex flex-col items-center px-6">
             <div className="w-full flex flex-col items-center">
               <div className="relative w-full flex flex-col items-center">
-                <img src={logoCream} alt="Maeum" className="w-[63%] h-auto mt-[25px]" />
+                <img src={logoCream} alt="Maeum" className="w-[63%] h-auto mt-[25px] hero-logo-fade-up" />
                 <img
                   src={bannerText}
                   alt="Heart Mind Feeling"
-                  className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[60%] h-auto hidden lg:block"
+                  className="absolute left-1/2 -translate-x-1/2 top-full mt-3 lg:mt-[105px] w-[60%] h-auto hidden lg:block"
                 />
               </div>
               <div className="relative w-full mt-2">

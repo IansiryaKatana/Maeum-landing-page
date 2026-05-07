@@ -136,6 +136,21 @@
   transform: none;
 }
 
+@keyframes hero-logo-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-logo-fade-up {
+  animation: hero-logo-fade-up 720ms ease-out 120ms both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-preloader,
   .site-content {
@@ -144,6 +159,10 @@
 
   .site-preloader__spinner {
     animation-duration: 1.6s;
+  }
+
+  .hero-logo-fade-up {
+    animation: none;
   }
 }
 
