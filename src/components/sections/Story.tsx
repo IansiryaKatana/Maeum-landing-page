@@ -44,13 +44,13 @@ const Story = () => {
           src={kiss}
           alt=""
           aria-hidden="true"
-          className="absolute -left-4 md:left-2 top-8 md:top-10 w-48 md:w-40 lg:w-[21rem] opacity-20 -rotate-12 hidden sm:block"
+          className="pointer-events-none absolute -left-10 sm:-left-16 md:-left-28 lg:-left-40 top-6 sm:top-8 md:top-10 w-28 sm:w-32 md:w-36 lg:w-[21rem] opacity-20 -rotate-12 hidden sm:block"
         />
         <img
           src={kiss}
           alt=""
           aria-hidden="true"
-          className="absolute -right-4 md:right-2 top-[78%] md:top-[74%] w-48 md:w-40 lg:w-[21rem] opacity-20 rotate-12 hidden sm:block"
+          className="pointer-events-none absolute -right-10 sm:-right-16 md:-right-28 lg:-right-40 top-[80%] sm:top-[78%] md:top-[74%] w-28 sm:w-32 md:w-36 lg:w-[21rem] opacity-20 rotate-12 hidden sm:block"
         />
 
         <h2 className="story-fade font-shakehand text-primary text-[48px] md:text-[72px] leading-tight mb-2">
@@ -60,12 +60,12 @@ const Story = () => {
           a kiss of <span className="font-myungjo">마음</span> <span className="font-shakehand">Maeum</span>
         </h3>
 
-        <div className="relative space-y-5 text-primary font-geist font-extralight text-[16px] leading-6 md:text-[20px] md:leading-7 lg:text-[32px] lg:leading-[1.3] lg:-translate-x-[50px]">
+        <div className="relative space-y-5 text-primary font-geist font-extralight text-[16px] leading-6 md:text-[20px] md:leading-7 lg:text-[32px] lg:leading-[1.3]">
           <img
             src={butterfly1}
             alt=""
             aria-hidden="true"
-            className="absolute -left-10 md:left-2 -top-[52px] md:-top-6 w-[72px] md:w-16 lg:w-24 h-auto animate-float"
+            className="pointer-events-none absolute hidden md:block md:-left-24 lg:-left-[120px] -top-[52px] md:-top-6 w-[56px] md:w-16 lg:w-24 h-auto animate-float"
             style={{ animationDuration: "5s" }}
           />
 

@@ -53,7 +53,7 @@ const Index = () => {
       }}
     >
       <h1 className="sr-only">Maeum — Beauty, with feeling. Seoul to Skin.</h1>
-      <section className="relative h-[50vh] md:h-screen p-[24px] md:p-[120px] overflow-hidden rounded-3xl" aria-label="Hero spacer">
+      <section className="relative h-[50vh] md:h-screen lg:h-[130vh] p-[24px] md:p-[120px] overflow-hidden rounded-3xl" aria-label="Hero spacer">
         <div
           className="absolute inset-0 hidden md:block lg:hidden"
           style={{
@@ -65,7 +65,7 @@ const Index = () => {
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 hidden lg:block"
+          className="absolute inset-x-0 top-0 h-full rounded-[36px] hidden lg:block"
           style={{
             backgroundImage: `url(${heroDesktop})`,
             backgroundSize: "contain",
@@ -88,11 +88,11 @@ const Index = () => {
           <div className="w-full flex flex-col items-center px-6">
             <div className="w-full flex flex-col items-center">
               <div className="relative w-full flex flex-col items-center">
-                <img src={logoCream} alt="Maeum" className="w-52 md:w-[28rem] lg:w-[34rem] h-auto mt-[25px]" />
+                <img src={logoCream} alt="Maeum" className="w-[63%] h-auto mt-[25px]" />
                 <img
                   src={bannerText}
                   alt="Heart Mind Feeling"
-                  className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-3/4 h-auto hidden lg:block"
+                  className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[60%] h-auto hidden lg:block"
                 />
               </div>
               <div className="relative w-full mt-2">
@@ -127,14 +127,16 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <div className="flex justify-center my-8 md:my-12">
-        <img
-          src={kiss}
-          alt=""
-          aria-hidden="true"
+      <section className="relative isolate z-20" aria-label="Divider">
+        <div className="mx-auto max-w-[1040px] flex justify-center my-8 md:my-12">
+          <img
+            src={kiss}
+            alt=""
+            aria-hidden="true"
             className="w-[200px] md:w-[22rem] animate-[pulse_2.4s_ease-in-out_infinite]"
-        />
-      </div>
+          />
+        </div>
+      </section>
       <Story />
       <LipCards />
       <PhotoBanner />

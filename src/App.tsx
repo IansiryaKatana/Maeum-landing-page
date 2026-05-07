@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,22 +11,68 @@ import TermsOfUse from "./pages/TermsOfUse.tsx";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-use" element={<TermsOfUse />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const PRELOADER_FADE_MS = 450;
+
+const App = () => {
+  const [isPageLoaded, setIsPageLoaded] = useState(
+    document.readyState === "complete",
+  );
+  const [isPreloaderVisible, setIsPreloaderVisible] = useState(
+    document.readyState !== "complete",
+  );
+  const [isPreloaderFading, setIsPreloaderFading] = useState(false);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setIsPageLoaded(true);
+      return;
+    }
+
+    const handleLoad = () => setIsPageLoaded(true);
+    window.addEventListener("load", handleLoad);
+
+    return () => window.removeEventListener("load", handleLoad);
+  }, []);
+
+  useEffect(() => {
+    if (!isPageLoaded || !isPreloaderVisible) return;
+
+    setIsPreloaderFading(true);
+    const timer = window.setTimeout(() => {
+      setIsPreloaderVisible(false);
+    }, PRELOADER_FADE_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [isPageLoaded, isPreloaderVisible]);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        {isPreloaderVisible && (
+          <div
+            className={`site-preloader ${isPreloaderFading ? "site-preloader--fade" : ""}`}
+            aria-label="Loading page"
+            role="status"
+          >
+            <div className="site-preloader__spinner" />
+          </div>
+        )}
+        <div className={`site-content ${isPageLoaded ? "site-content--ready" : ""}`}>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-use" element={<TermsOfUse />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
