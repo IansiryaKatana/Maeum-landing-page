@@ -16,16 +16,30 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [focusedField, setFocusedField] = useState<"name" | "email" | "phone" | null>(null);
   const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim();
   const waitlistEndpoint = apiBaseUrl
     ? `${apiBaseUrl.replace(/\/+$/, "")}/api/waitlist`
     : "/api/waitlist";
+
+  const isPhoneValid = (value: string) => {
+    const digits = value.replace(/\D/g, "");
+    return digits.length >= 10 && digits.length <= 15;
+  };
 
   if (!isOpen) return null;
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFeedback(null);
+    setPhoneError(null);
+
+    if (!isPhoneValid(phone)) {
+      setPhoneError("Please enter a valid phone number including country code.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -132,28 +146,55 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
               </p>
 
               <form onSubmit={onSubmit} className="space-y-3">
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  placeholder="Name"
-                  required
-                  className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
-                />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Email"
-                  required
-                  className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
-                />
+                <div
+                  className={`rounded-[12px] bg-white transition-shadow ${
+                    focusedField === "name" ? "ring-2 ring-[#c81b17]/50" : "ring-1 ring-transparent"
+                  }`}
+                >
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    onFocus={() => setFocusedField("name")}
+                    onBlur={() => setFocusedField(null)}
+                    placeholder="Name"
+                    required
+                    className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
+                  />
+                </div>
+                <div
+                  className={`rounded-[12px] bg-white transition-shadow ${
+                    focusedField === "email" ? "ring-2 ring-[#c81b17]/50" : "ring-1 ring-transparent"
+                  }`}
+                >
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    onFocus={() => setFocusedField("email")}
+                    onBlur={() => setFocusedField(null)}
+                    placeholder="Email"
+                    required
+                    className="w-full rounded-[12px] border-0 bg-white px-4 py-3 font-geist text-[16px] text-black placeholder:text-black/50 outline-none focus:outline-none focus:ring-0"
+                  />
+                </div>
                 <PhoneInput
                   country="us"
                   value={phone}
-                  onChange={(value) => setPhone(value)}
+                  onChange={(value) => {
+                    setPhone(value);
+                    if (phoneError) setPhoneError(null);
+                  }}
                   disableDropdown
-                  containerStyle={{ width: "100%" }}
+                  containerStyle={{
+                    width: "100%",
+                    borderRadius: "12px",
+                    boxShadow:
+                      focusedField === "phone"
+                        ? "0 0 0 2px rgba(200, 27, 23, 0.5)"
+                        : "0 0 0 1px transparent",
+                    transition: "box-shadow 150ms ease",
+                  }}
                   buttonStyle={{
                     border: "0",
                     background: "#ffffff",
@@ -175,8 +216,15 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
                     name: "phone",
                     required: true,
                     placeholder: "Phone number",
+                    onFocus: () => setFocusedField("phone"),
+                    onBlur: () => setFocusedField(null),
                   }}
                 />
+                {phoneError ? (
+                  <p className="text-sm font-geist text-[#7a3a33]" role="alert">
+                    {phoneError}
+                  </p>
+                ) : null}
 
                 <label className="flex items-start gap-2.5 text-left">
                   <input
@@ -201,7 +249,7 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
 
                 <button
                   type="submit"
-                  disabled={!hasConsent || isSubmitting}
+                  disabled={!hasConsent || isSubmitting || !isPhoneValid(phone)}
                   className="w-full rounded-[12px] bg-[#c81b17] px-4 py-3 text-[#f6ead0] font-myungjo text-[16px] uppercase tracking-[0.03em] shadow-[0_10px_24px_rgba(0,0,0,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}

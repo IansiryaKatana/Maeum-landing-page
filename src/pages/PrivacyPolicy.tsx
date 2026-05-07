@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { ArrowDown, ArrowUp, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   const privacyContent = `Privacy Policy
 Maeum
 Operated by UNIQUE WHOLESALE & DISTRIBUTION LIMITED

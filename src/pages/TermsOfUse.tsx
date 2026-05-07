@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { ArrowDown, ArrowUp, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const TermsOfUse = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   const termsContent = `Terms of service
 Terms and Conditions for Service Use for Maeum
 
