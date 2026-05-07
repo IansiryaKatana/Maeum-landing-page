@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@200&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Acumin';
+  src: url('/fonts/AcuminVariableConcept.otf') format('opentype-variations'),
+       url('/fonts/AcuminVariableConcept.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adobe Myungjo';
+  src: url('/fonts/AdobeMyungjoStd-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lucy Rose';
+  src: url('/fonts/LucyRosePERSONAL-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shakehand Brothers';
+  src: url('/fonts/Shakehand_Brothers.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: 0 72% 42%;
+    --foreground: 40 60% 92%;
+
+    --card: 40 70% 90%;
+    --card-foreground: 0 60% 25%;
+
+    --popover: 40 70% 90%;
+    --popover-foreground: 0 60% 25%;
+
+    --primary: 0 75% 45%;
+    --primary-foreground: 40 70% 95%;
+
+    --secondary: 40 65% 88%;
+    --secondary-foreground: 0 60% 25%;
+
+    --muted: 40 40% 80%;
+    --muted-foreground: 0 30% 30%;
+
+    --accent: 40 80% 85%;
+    --accent-foreground: 0 70% 35%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 70% 95%;
+
+    --border: 40 40% 75%;
+    --input: 40 40% 75%;
+    --ring: 0 75% 45%;
+
+    --radius: 0.75rem;
+
+    --page-padding: 36px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+}
