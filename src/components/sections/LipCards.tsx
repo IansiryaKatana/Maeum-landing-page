@@ -26,7 +26,7 @@ const LipCards = () => {
   }, []);
 
   return (
-    <section ref={ref} className="relative z-10 md:mt-[100px] mb-0" aria-label="Lip preview">
+    <section ref={ref} className="relative z-50 -mt-[56px] md:z-10 md:mt-[100px] mb-0" aria-label="Lip preview">
       <div className="relative w-full max-w-[1040px] mx-auto">
         <div className="flex w-full items-center justify-center">
           <div className="lip-card group relative w-full max-w-[1040px]">
@@ -34,14 +34,14 @@ const LipCards = () => {
               src={chamomile}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none select-none absolute -top-12 left-2 md:-top-16 md:-left-6 lg:-top-10 w-16 md:w-20 lg:w-[108px] h-auto animate-float z-20"
+              className="pointer-events-none select-none absolute -top-2 left-2 md:-top-16 md:-left-6 lg:-top-10 w-16 md:w-20 lg:w-[108px] h-auto animate-float z-10 md:z-20"
               style={{ animationDuration: "5.2s" }}
             />
             <img
               src={butterfly}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none select-none absolute -top-10 right-2 md:-top-16 md:-right-6 lg:-top-10 w-14 md:w-20 lg:w-[108px] h-auto animate-float z-20"
+              className="pointer-events-none select-none absolute -top-1 right-2 md:-top-16 md:-right-6 lg:-top-10 w-14 md:w-20 lg:w-[108px] h-auto animate-float z-10 md:z-20"
               style={{ animationDuration: "4.8s", animationDelay: "0.3s" }}
             />
             <img

@@ -33,7 +33,7 @@ const Waitlist = ({ onOpenPopup }: WaitlistProps) => {
   return (
     <section
       ref={ref}
-      className="relative z-0 -mx-[var(--page-padding)] px-6 pt-12 pb-12 md:pt-[240px] md:pb-28 md:-mt-[140px]"
+      className="relative z-10 -mx-[var(--page-padding)] px-6 pt-4 pb-12 md:pt-[240px] md:pb-28 md:-mt-[290px]"
       style={{
         backgroundImage: `url(${redBg})`,
         backgroundSize: "cover",
@@ -42,7 +42,7 @@ const Waitlist = ({ onOpenPopup }: WaitlistProps) => {
       }}
       aria-label="Join the waitlist"
     >
-      <div className="relative max-w-[1040px] mx-auto">
+      <div className="relative max-w-[1040px] mx-auto pt-[100px]">
         <div className="relative waitlist-fade w-full h-[650px] md:h-[640px] rounded-3xl bg-transparent px-8 py-12 md:px-16 md:py-16">
           <img
             src={postcardMobile}
@@ -103,15 +103,15 @@ const Waitlist = ({ onOpenPopup }: WaitlistProps) => {
             aria-hidden="true"
             className="absolute -bottom-8 -left-6 md:-left-12 w-32 md:w-48 -rotate-12"
           />
-        </div>
 
-        {/* Floating butterfly */}
-        <Butterfly
-          variant={2}
-          className="absolute -top-12 right-0 md:right-4"
-          size={112}
-          delay={0.6}
-        />
+          {/* Anchored to postcard so it moves with layout (e.g. top padding gap) */}
+          <Butterfly
+            variant={2}
+            className="absolute -top-12 right-0 md:right-4 z-20"
+            style={{ width: "clamp(96px, 22vw, 168px)" }}
+            delay={0.6}
+          />
+        </div>
       </div>
     </section>
   );

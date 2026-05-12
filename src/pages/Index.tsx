@@ -6,8 +6,6 @@ import heroMobile from "@/assets/head-banner-mobile.png";
 import kiss from "@/assets/KISS.png";
 import logoCream from "@/assets/logo-cream-color.png";
 import bannerText from "@/assets/banner-text.png";
-import butterfly1 from "@/assets/butterfly-1.png";
-import butterfly2 from "@/assets/butterfly-2.png";
 import Story from "@/components/sections/Story";
 import LipCards from "@/components/sections/LipCards";
 import PhotoBanner from "@/components/sections/PhotoBanner";
@@ -94,28 +92,6 @@ const Index = () => {
                   alt="Heart Mind Feeling"
                   className="absolute left-1/2 -translate-x-1/2 top-full mt-3 lg:mt-[105px] w-[60%] h-auto hidden lg:block"
                 />
-              </div>
-              <div className="relative w-full mt-2">
-                <img
-                  src={butterfly1}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-14 h-14 md:w-20 md:h-20 object-contain animate-float"
-                  style={{ animationDuration: "4.8s" }}
-                />
-                <button
-                  type="button"
-                  aria-label="Decorative butterfly"
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
-                >
-                  <img
-                    src={butterfly2}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-14 h-14 md:w-20 md:h-20 object-contain animate-float"
-                    style={{ animationDuration: "5.6s", animationDelay: "0.4s" }}
-                  />
-                </button>
               </div>
             </div>
           </div>
