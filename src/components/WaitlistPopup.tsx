@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Link } from "react-router-dom";
+import { MAEUM_WAITLIST_API_ORIGIN } from "@/lib/site";
 
 type WaitlistPopupProps = {
   isOpen: boolean;
@@ -18,7 +19,10 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
   const [feedback, setFeedback] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [focusedField, setFocusedField] = useState<"name" | "email" | "phone" | null>(null);
-  const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim();
+  const apiBaseFromEnv = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim();
+  const apiBaseUrl =
+    apiBaseFromEnv ||
+    (import.meta.env.DEV ? "" : MAEUM_WAITLIST_API_ORIGIN);
   const waitlistEndpoint = apiBaseUrl
     ? `${apiBaseUrl.replace(/\/+$/, "")}/api/waitlist`
     : "/api/waitlist";

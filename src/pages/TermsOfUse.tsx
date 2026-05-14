@@ -14,7 +14,7 @@ Article 1 (Purpose)
 These Terms and Conditions govern your use of the Maeum website (the "Website") and any purchases you make from it. The Website is operated by UNIQUE WHOLESALE & DISTRIBUTION LIMITED (the "Company"). These Terms set out the rights and obligations between the Company and users of the Website.
 
 Article 2 (Definitions)
-① "Website" means the Maeum website operated by the Company..
+① "Website" means https://maeum.co.uk (the Maeum website) operated by the Company.
 ② "Users" shall refer to members and non-members who get access to the "Website" and receive the Services provided by the "Website" under these Terms and Conditions.
 ③ "Members" shall refer to persons who have provided their personal information to the Company and registered their membership for the Services, and who can be continuously provided with information of the Services and continue to use the Services provided by the Company.
 ④ "Products" means the skincare and related products sold on the Website.

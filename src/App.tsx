@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CookieConsent from "@/components/CookieConsent";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import RouteSeo from "@/components/RouteSeo";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
@@ -70,6 +71,7 @@ const App = () => {
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <RouteSeo />
             <GoogleAnalytics />
             <CookieConsent />
           </BrowserRouter>

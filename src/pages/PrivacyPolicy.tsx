@@ -12,7 +12,7 @@ Maeum
 Operated by UNIQUE WHOLESALE & DISTRIBUTION LIMITED
 Last updated: 27/02/2026
 
-UNIQUE WHOLESALE & DISTRIBUTION LIMITED ("Company", "we", "us", or "our") is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, store, and protect personal data when you visit our website or otherwise interact with us.
+UNIQUE WHOLESALE & DISTRIBUTION LIMITED ("Company", "we", "us", or "our") is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, store, and protect personal data when you visit https://maeum.co.uk or otherwise interact with us.
 
 1. Who We Are
 UNIQUE WHOLESALE & DISTRIBUTION LIMITED is the data controller for the purposes of the UK General Data Protection Regulation ("UK GDPR") and the Data Protection Act 2018.
