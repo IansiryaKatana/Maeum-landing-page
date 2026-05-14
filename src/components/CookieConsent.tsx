@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
-const COOKIE_CONSENT_KEY = "maeum-cookie-consent";
+import { COOKIE_CONSENT_KEY } from "@/lib/cookieConsentStorage";
+import { loadGoogleAnalytics } from "@/lib/googleAnalytics";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,6 +16,9 @@ const CookieConsent = () => {
   const handleConsent = (value: "accepted" | "declined") => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(COOKIE_CONSENT_KEY, value);
+      if (value === "accepted") {
+        loadGoogleAnalytics();
+      }
     }
     setIsVisible(false);
   };
