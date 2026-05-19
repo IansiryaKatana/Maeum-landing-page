@@ -104,13 +104,15 @@ const Waitlist = ({ onOpenPopup }: WaitlistProps) => {
             className="absolute -bottom-8 -left-6 md:-left-12 w-32 md:w-48 -rotate-12"
           />
 
-          {/* Anchored to postcard so it moves with layout (e.g. top padding gap) */}
-          <Butterfly
-            variant={2}
-            className="absolute -top-12 right-0 md:right-4 z-20"
-            style={{ width: "clamp(96px, 22vw, 168px)" }}
-            delay={0.6}
-          />
+          {/* Wrapper: float keyframes use transform on the img, so vertical nudge lives here */}
+          <div className="absolute -top-12 right-0 z-20 translate-y-12 md:translate-y-0 md:right-4 pointer-events-none">
+            <Butterfly
+              variant={2}
+              className="relative block"
+              style={{ width: "clamp(96px, 22vw, 168px)" }}
+              delay={0.6}
+            />
+          </div>
         </div>
       </div>
     </section>

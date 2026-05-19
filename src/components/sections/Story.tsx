@@ -90,8 +90,10 @@ const Story = () => {
           </p>
         </div>
 
-        <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] md:leading-none mt-10">xoxo</p>
-        <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] md:leading-none mt-1">
+        <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] leading-none mt-6 md:mt-10 -mx-4 md:mx-0">
+          xoxo
+        </p>
+        <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] leading-none mt-1">
           With Love, Maeum
         </p>
       </div>

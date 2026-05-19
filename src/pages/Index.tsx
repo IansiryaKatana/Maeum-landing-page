@@ -51,7 +51,7 @@ const Index = () => {
       }}
     >
       <h1 className="sr-only">Maeum — Beauty, with feeling. Seoul to Skin.</h1>
-      <section className="relative h-[50vh] md:h-screen lg:h-[130vh] p-[24px] md:p-[120px] overflow-hidden rounded-3xl" aria-label="Hero spacer">
+      <section className="relative h-[50vh] md:h-screen lg:h-[130vh] p-[24px] md:p-[120px] overflow-visible md:overflow-hidden rounded-3xl" aria-label="Hero spacer">
         <div
           className="absolute inset-0 hidden md:block lg:hidden"
           style={{
@@ -86,7 +86,7 @@ const Index = () => {
           <div className="w-full flex flex-col items-center px-6">
             <div className="w-full flex flex-col items-center">
               <div className="relative w-full flex flex-col items-center">
-                <img src={logoCream} alt="Maeum" className="w-[63%] h-auto mt-[25px] hero-logo-fade-up" />
+                <img src={logoCream} alt="Maeum" className="w-[140.65%] md:w-[53.55%] h-auto mt-[25px] hero-logo-fade-up" />
                 <img
                   src={bannerText}
                   alt="Heart Mind Feeling"
@@ -109,7 +109,7 @@ const Index = () => {
             src={kiss}
             alt=""
             aria-hidden="true"
-            className="w-[200px] md:w-[22rem] animate-[pulse_2.4s_ease-in-out_infinite]"
+            className="w-[110px] md:w-[22rem] animate-[pulse_2.4s_ease-in-out_infinite]"
           />
         </div>
       </section>

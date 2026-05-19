@@ -9,7 +9,7 @@ const PhotoBanner = () => {
           <img src={banner} alt="Maeum — Seoul to Skin" className="w-full h-auto block" />
         </div>
         <div
-          className="absolute z-10 -left-2 md:-left-6 lg:-left-8 top-[11%] md:top-[13%] rotate-[22deg] origin-top-left pointer-events-none"
+          className="absolute z-10 -left-2 md:-left-6 lg:-left-8 top-[11%] md:top-[13%] translate-y-[72px] md:translate-y-[120px] lg:translate-y-[200px] rotate-[22deg] origin-top-left pointer-events-none"
           aria-hidden="true"
         >
           <Butterfly
