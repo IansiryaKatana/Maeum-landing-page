@@ -104,7 +104,7 @@ const Index = () => {
         </div>
       </section>
       <section className="relative isolate z-20" aria-label="Divider">
-        <div className="mx-auto max-w-[1040px] flex justify-center my-8 md:my-12">
+        <div className="mx-auto max-w-[1040px] flex justify-center my-1 md:my-12">
           <img
             src={kiss}
             alt=""

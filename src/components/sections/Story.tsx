@@ -28,7 +28,7 @@ const Story = () => {
   return (
     <section
       ref={ref}
-      className="relative py-16 md:py-24"
+      className="relative pt-2 pb-8 md:py-24"
       style={{
         backgroundImage: `url(${storyBg})`,
         backgroundSize: "100% auto",
