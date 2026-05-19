@@ -28,7 +28,7 @@ const Story = () => {
   return (
     <section
       ref={ref}
-      className="relative pt-2 pb-8 md:py-24"
+      className="relative pt-10 pb-14 md:py-24"
       style={{
         backgroundImage: `url(${storyBg})`,
         backgroundSize: "100% auto",
@@ -38,7 +38,7 @@ const Story = () => {
       }}
       aria-label="Our story"
     >
-      <div className="relative max-w-[840px] mx-auto text-center px-4 md:mt-[60px]">
+      <div className="relative max-w-[840px] mx-auto text-center px-4 pt-6 md:pt-0 md:mt-[60px]">
         {/* Side kiss decorations */}
         <img
           src={kiss}
@@ -93,7 +93,7 @@ const Story = () => {
         <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] leading-none mt-6 md:mt-10 -mx-4 md:mx-0">
           xoxo
         </p>
-        <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] leading-none mt-1">
+        <p className="story-fade font-shakehand text-primary text-[40px] md:text-[72px] leading-none mt-1 mb-2 md:mb-0">
           With Love, Maeum
         </p>
       </div>

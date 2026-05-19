@@ -26,7 +26,7 @@ const LipCards = () => {
   }, []);
 
   return (
-    <section ref={ref} className="relative z-50 -mt-[56px] md:z-10 md:mt-[100px] mb-0" aria-label="Lip preview">
+    <section ref={ref} className="relative z-10 mt-6 md:mt-[100px] mb-0" aria-label="Lip preview">
       <div className="relative w-full max-w-[1040px] mx-auto">
         <div className="flex w-full items-center justify-center">
           <div className="lip-card group relative w-full max-w-[1040px]">
