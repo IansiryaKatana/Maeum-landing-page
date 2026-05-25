@@ -183,7 +183,7 @@ const WaitlistPopup = ({ isOpen, onClose }: WaitlistPopupProps) => {
                   />
                 </div>
                 <PhoneInput
-                  country="us"
+                  country="gb"
                   value={phone}
                   onChange={(value) => {
                     setPhone(value);
